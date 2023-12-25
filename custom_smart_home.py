@@ -8,7 +8,7 @@ class DeskLamp(Device):
 
     def annihilate(self):
         logger.info(f"ANNIHILATING {self.__class__.__name__}, WATCH OUT!")
-        Apartment.trash.append(Trash(f'some {self.__class__.__name__} trash'))
+        Apartment.trash.append(Trash(f"some {self.__class__.__name__} trash"))
         Apartment.temperature += 10
         for attribute in list(self.__dict__.keys()):
             delattr(self, attribute)
@@ -20,13 +20,13 @@ class Humidifier(Device):
 
     def annihilate(self):
         logger.info(f"ANNIHILATING {self.__class__.__name__}, WATCH OUT!")
-        Apartment.trash.append(Trash(f'some {self.__class__.__name__} trash'))
+        Apartment.trash.append(Trash(f"some {self.__class__.__name__} trash"))
         Apartment.humidity += 10
         for attribute in list(self.__dict__.keys()):
             delattr(self, attribute)
 
 
-lamp = DeskLamp(device_id=1, name='simple lamp')
+lamp = DeskLamp(device_id=1, name="simple lamp")
 
 
 lamp.turn_on()
@@ -44,7 +44,7 @@ lamp.state = ON()
 print(lamp.state)
 
 
-print('####')
+print("####")
 
 ap = Apartment()
 print(ap.trash)

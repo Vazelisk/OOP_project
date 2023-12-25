@@ -13,8 +13,10 @@ class Device(ABC):
 
     def __repr__(self):
         if self.annihilated:
-            raise ValueError(f"This {self.__class__.__name__} object has been annihilated and should not be used "
-                             f"anymore.")
+            raise ValueError(
+                f"This {self.__class__.__name__} object has been annihilated and should not be used "
+                f"anymore."
+            )
         else:
             return f"{self.__class__.__name__}(device_id={self.device_id}, name='{self.name}')"
 
@@ -40,7 +42,7 @@ class Device(ABC):
 
 @dataclass
 class Trash:
-    descr: str = 'Some bunch of trash'
+    descr: str = "Some bunch of trash"
 
 
 @dataclass
@@ -50,6 +52,6 @@ class Apartment:
     humidity: float = 40
 
     def __new__(cls, *args, **kwargs):
-        if not hasattr(cls, '_apartement'):
+        if not hasattr(cls, "_apartement"):
             cls._apartement = super(Apartment, cls).__new__(cls, *args, **kwargs)
         return cls._apartement

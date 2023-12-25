@@ -5,23 +5,23 @@ from custom_smart_home import DeskLamp, Humidifier
 
 @pytest.fixture
 def basic_lamp():
-    return DeskLamp(device_id=1, name='Basic Lamp')
+    return DeskLamp(device_id=1, name="Basic Lamp")
 
 
 @pytest.fixture
 def basic_humidifier():
-    return Humidifier(device_id=2, name='Basic Humidifier')
+    return Humidifier(device_id=2, name="Basic Humidifier")
 
 
 def test_desklamp_initialization(basic_lamp):
     assert basic_lamp.device_id == 1
-    assert basic_lamp.name == 'Basic Lamp'
+    assert basic_lamp.name == "Basic Lamp"
     assert not basic_lamp.annihilated
 
 
 def test_humidifier_initialization(basic_humidifier):
     assert basic_humidifier.device_id == 2
-    assert basic_humidifier.name == 'Basic Humidifier'
+    assert basic_humidifier.name == "Basic Humidifier"
     assert not basic_humidifier.annihilated
 
 
