@@ -1,5 +1,6 @@
 from devices.models import *
 from logger_config import logger
+import emoji
 
 
 class DeskLamp(Device):
@@ -7,7 +8,11 @@ class DeskLamp(Device):
         super().__init__(device_id, name, annihilated)
 
     def annihilate(self):
-        logger.info(f"ANNIHILATING {self.__class__.__name__}, WATCH OUT!")
+        logger.info(
+            emoji.emojize(
+                f"ANNIHILATING {self.__class__.__name__}, WATCH OUT! \U0001F600"
+            )
+        )
         Apartment.trash.append(Trash(f"some {self.__class__.__name__} trash"))
         Apartment.temperature += 10
         for attribute in list(self.__dict__.keys()):
@@ -19,36 +24,10 @@ class Humidifier(Device):
         super().__init__(device_id, name, annihilated)
 
     def annihilate(self):
-        logger.info(f"ANNIHILATING {self.__class__.__name__}, WATCH OUT!")
+        logger.info(
+            f"FLOATING COMES BECAUSE OF {self.__class__.__name__}, WATCH OUT! :thumbs_up:"
+        )
         Apartment.trash.append(Trash(f"some {self.__class__.__name__} trash"))
         Apartment.humidity += 10
         for attribute in list(self.__dict__.keys()):
             delattr(self, attribute)
-
-
-lamp = DeskLamp(device_id=1, name="simple lamp")
-
-
-lamp.turn_on()
-print(lamp.state)
-
-lamp.turn_on()
-
-print(lamp.state)
-
-lamp.turn_off()
-
-print(lamp.state)
-
-lamp.state = ON()
-print(lamp.state)
-
-
-print("####")
-
-ap = Apartment()
-print(ap.trash)
-lamp.annihilate()
-print(ap.trash)
-ap2 = Apartment()
-print(ap.trash)

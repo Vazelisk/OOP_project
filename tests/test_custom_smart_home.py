@@ -1,6 +1,11 @@
 import pytest
 from devices.models import Trash, Apartment
 from custom_smart_home import DeskLamp, Humidifier
+import os
+
+
+log_directory = "logs"
+os.makedirs(log_directory, exist_ok=True)
 
 
 @pytest.fixture

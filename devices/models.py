@@ -2,6 +2,7 @@ from devices.state_management import *
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import ClassVar, List
+from pydantic import confloat
 
 
 class Device(ABC):
@@ -49,7 +50,7 @@ class Trash:
 class Apartment:
     trash: ClassVar[List] = []
     temperature: float = 25
-    humidity: float = 40
+    humidity: confloat(gt=0, lt=100) = 40
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, "_apartement"):

@@ -2,6 +2,10 @@ import pytest
 from devices.models import Device, Trash, Apartment
 from custom_smart_home import DeskLamp
 from devices.state_management import ON, OFF
+import os
+
+log_directory = "logs"
+os.makedirs(log_directory, exist_ok=True)
 
 
 class TestDevice(Device):
